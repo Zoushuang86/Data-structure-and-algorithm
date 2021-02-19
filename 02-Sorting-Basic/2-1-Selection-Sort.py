@@ -20,21 +20,21 @@ class Student:
         self.name = name
         self.score = score
 
-    # 重载>
+    # 重写>
     def __gt__(self, other):
         if self.score > other.score:
             return True
         else:
             return False
 
-    # 重载<
+    # 重写<
     def __lt__(self, other):
         if self.score < other.score:
             return True
         else:
             return False
 
-    # 重载print
+    # 重写print
     def __str__(self):
         return str(self.name)+":"+str(self.score)
 
