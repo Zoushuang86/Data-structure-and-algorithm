@@ -4,7 +4,7 @@ from sort_test_helper import *
 
 if __name__ == "__main__":
     n = 10000
-    arr = generate_random_list(n, 0, 3)
+    arr = generate_random_list(n, 0, n)
     arr2 = arr.copy()
     """
     改进前：
