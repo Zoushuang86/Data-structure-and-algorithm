@@ -8,7 +8,7 @@ def selection_sort(arr: List[Generic[T]], n: int) -> List[Generic[T]]:
     for i in range(n):
         # 寻找[i, n)区间里的最小值
         minIndex = i
-        for j in range(i+1, n):
+        for j in range(i+1, n, 1):
             if arr[j] < arr[minIndex]:
                 minIndex = j
         t = arr[minIndex]
