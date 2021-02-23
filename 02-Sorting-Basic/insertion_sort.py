@@ -25,7 +25,7 @@ def insertion_sort_new(arr: List[Generic[T]], n: int) -> List[Generic[T]]:
         # 寻找元素arr[i]合适的插入位置
         j = i
         e = arr[i]
-        for j in range(i, 0, -1):
+        for j in range(i, -1, -1):
             if e < arr[j-1]:
                 arr[j] = arr[j-1]
             else:
@@ -36,8 +36,8 @@ def insertion_sort_new(arr: List[Generic[T]], n: int) -> List[Generic[T]]:
 
 if __name__ == "__main__":
     n = 10
-    arr = generate_random_list(n, 0, n)
+    arr = generate_random_list(n, 0, 10)
     print(arr)
-    arr2 = insertion_sort(arr, len(arr))
+    arr2 = insertion_sort_new(arr, len(arr))
     print(arr2)
-    test_sort("Insertion Sort", insertion_sort, arr, len(arr))
+    # test_sort("Insertion Sort", insertion_sort, arr, len(arr))
