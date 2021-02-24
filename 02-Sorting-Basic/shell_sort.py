@@ -5,7 +5,7 @@ from sort_test_helper import *
 
 
 # 改进前
-def shell_sort(arr: List[Generic[T]], n: int) -> List[Generic[T]]:
+def shell_sort(arr: List[Generic[T]], n: int):
     # 计算 increment sequence: 1, 4, 13, 40...
     h = 1
     while h < n / 3:
@@ -23,7 +23,6 @@ def shell_sort(arr: List[Generic[T]], n: int) -> List[Generic[T]]:
                     break
             arr[j] = e
         h = h // 3
-    return arr
 
 
 if __name__ == "__main__":
@@ -31,7 +30,8 @@ if __name__ == "__main__":
     arr = generate_random_list(n, 0, 100)
     arr2 = arr.copy()
     print(arr)
-    print(shell_sort(arr, len(arr)))
+    shell_sort(arr, len(arr))
+    print(arr)
     """
     Bubble Sort : 4.18 s
     Bubble Sort New : 3.76 s

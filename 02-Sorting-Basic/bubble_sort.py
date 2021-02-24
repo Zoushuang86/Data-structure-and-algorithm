@@ -5,16 +5,15 @@ from sort_test_helper import *
 
 
 # 改进前
-def bubble_sort(arr: List[Generic[T]], n: int) -> List[Generic[T]]:
+def bubble_sort(arr: List[Generic[T]], n: int):
     for i in range(1, n):
         for j in range(0, n-i):
             if arr[j] > arr[j+1]:
                 arr[j], arr[j + 1] = arr[j + 1], arr[j]
-    return arr
 
 # 改进后
 # 记录最后交换位置，之后的元素在下一轮不再交换
-def bubble_sort_new(arr: List[Generic[T]], n: int) -> List[Generic[T]]:
+def bubble_sort_new(arr: List[Generic[T]], n: int):
     new_n = 1
     while new_n > 0:
         new_n = 0
@@ -23,7 +22,6 @@ def bubble_sort_new(arr: List[Generic[T]], n: int) -> List[Generic[T]]:
                 arr[i-1], arr[i] = arr[i], arr[i-1]
                 new_n = i
         n = new_n
-    return arr
 
 
 if __name__ == "__main__":
@@ -31,7 +29,8 @@ if __name__ == "__main__":
     arr = generate_nearly_ordered_array(n, 10)
     arr2 = arr.copy()
     # print(arr)
-    # print(bubble_sort_new(arr, len(arr)))
+    # bubble_sort_new(arr, len(arr))
+    # print(arr)
     """
     Bubble Sort : 4.18 s
     Bubble Sort New : 3.76 s

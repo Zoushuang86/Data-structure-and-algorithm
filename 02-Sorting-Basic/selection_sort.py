@@ -4,7 +4,7 @@ T = TypeVar("T")    # Can be anything
 
 from sort_test_helper import generate_random_list, test_sort, is_sorted
 
-def selection_sort(arr: List[Generic[T]], n: int) -> List[Generic[T]]:
+def selection_sort(arr: List[Generic[T]], n: int):
     for i in range(n):
         # 寻找[i, n)区间里的最小值
         minIndex = i
@@ -14,7 +14,6 @@ def selection_sort(arr: List[Generic[T]], n: int) -> List[Generic[T]]:
         t = arr[minIndex]
         arr[minIndex] = arr[i]
         arr[i] = t
-    return arr
 
 
 class Student:
