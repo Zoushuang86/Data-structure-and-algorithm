@@ -44,7 +44,7 @@ def insertion_sort_new(arr: List[Generic[T]], left: int, right: int):
         arr[j] = e
 
 if __name__ == "__main__":
-    n = 10
+    n = 20
     arr = generate_random_list(n, 0, 10)
     print(arr)
     insertion_sort_new(arr, 5, 9)

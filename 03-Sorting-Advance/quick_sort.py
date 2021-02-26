@@ -60,8 +60,8 @@ def __quick_sort_new(arr, left, right):
         return
 
     p = __partition_new(arr, left, right)
-    __quick_sort(arr, left, p-1)
-    __quick_sort(arr, p+1, right)
+    __quick_sort_new(arr, left, p-1)
+    __quick_sort_new(arr, p+1, right)
 
 
 # 改进后
