@@ -1,9 +1,9 @@
-import random, math
+import random
 from typing import TypeVar, Generic
 T = TypeVar("T")
 
 
-class MaxHeap():
+class MaxHeap:
     def __init__(self, capacity):
         # index=0不存储
         self.__data = [Generic[T]] * (capacity+1)
@@ -27,13 +27,35 @@ class MaxHeap():
         self.__count += 1
         self.__shiftUp(self.__count)
 
+
+    def __shiftDown(self, k):
+        while 2*k <= self.__count:
+            # 在此轮循环中，data[k]和data[j]交换位置
+            j = 2*k
+            if j+1 <= self.__count and self.__data[j+1] > self.__data[j]:
+                j += 1
+            if self.__data[k] >= self.__data[j]:
+                break
+            else:
+                self.__data[k], self.__data[j] = self.__data[j], self.__data[k]
+                k = j
+
+
+    def extructMax(self):
+        assert self.__count > 0
+        ret = self.__data[1]
+        self.__data[1], self.__data[self.__count] = self.__data[self.__count], self.__data[1]
+        self.__count -= 1
+        self.__shiftDown(1)
+        return ret
+
     def __replace(self, s, rep, index):
         # 替换s的从index开始的部分字符串，替换长度为len(rep)
         prev = s[0:index]
         next = s[index + len(rep):len(s)]
         return prev + rep + next
 
-    def __getLevelAssign(self, heap, limit):
+    def __getLevelAssign(self, limit):
         # 观察范围是[0, limit]的完全二叉树tree，
         # 然后得到tree对应的满二叉树的每层的信息
         # 包括 每层开始节点的所在数组索引levelStart
@@ -55,7 +77,7 @@ class MaxHeap():
 
     def printHeap(self):
         heap = self.__data[1: self.__count+1]
-        assign = self.__getLevelAssign(heap, self.__count)  # 得到了每个数字层的信息
+        assign = self.__getLevelAssign(self.__count)  # 得到了每个数字层的信息
         maxLevelLen = 0
         maxLevelBlankNumber = 3  # 此处可调节。代表最后一层的数字之间的空格数
         printLi = []
@@ -115,8 +137,11 @@ class MaxHeap():
 
 
 if __name__ == "__main__":
-    n = 13
+    n = 20
     maxheap = MaxHeap(100)
     for i in range(n):
         maxheap.insert(random.randint(0, 99))
+    maxheap.printHeap()
+    # while maxheap.isEmpty() == False:
+    maxheap.extructMax()
     maxheap.printHeap()
