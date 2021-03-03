@@ -16,7 +16,8 @@ def __shiftDown(arr, n, k):
 
 
 def heap_sort(arr, n):
-    for i in range((n-1)//2, -1, -1):
+    # Heapify过程
+    for i in range((n-1-1)//2, -1, -1):
         __shiftDown(arr, n, i)
 
     for i in range(n-1, 0, -1):
