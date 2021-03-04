@@ -173,7 +173,7 @@ class IndexMaxHeap:
 
 if __name__ == "__main__":
     n = 20
-    maxheap = MaxHeap(100)
+    maxheap = IndexMaxHeap(100)
     for i in range(n):
         maxheap.insert(random.randint(0, 99))
     maxheap.printHeap()
