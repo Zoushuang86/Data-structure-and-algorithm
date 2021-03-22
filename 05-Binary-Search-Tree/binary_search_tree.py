@@ -1,14 +1,22 @@
 from queue import Queue
+from collections import Counter
+import time
 
 
 class BST:
 
     class __Node:
-        def __init__(self, key, value):
-            self.key = key
-            self.value = value
-            self.left = None
-            self.right = None
+        def __init__(self, key, value, node=None):
+            if node == None:
+                self.key = key
+                self.value = value
+                self.left = None
+                self.right = None
+            else:
+                self.key = node.key
+                self.value = node.value
+                self.left = node.left
+                self.right = node.right
 
     def __init__(self):
         self.root = None
@@ -47,6 +55,19 @@ class BST:
 
     def contain(self, key):
         return self.__contain(self.root, key)
+
+    def __search(self, node: __Node, key):
+        if node == None:
+            return None
+        if key == node.key:
+            return node.value
+        elif key < node.key:
+            return self.__search(node.left, key)
+        else:
+            return self.__search(node.right, key)
+
+    def search(self, key):
+        return self.__search(self.root, key)
 
     def __pre_order(self, node: __Node):
         if node != None:
@@ -139,6 +160,59 @@ class BST:
         if self.root != None:
             self.root = self.__remove_max(self.root)
 
+    def __remove(self, node: __Node, key):
+        if node == None:
+            return None
+        if key < node.key:
+            node.left = self.__remove(node.left, key)
+            return node
+        elif key > node.key:
+            node.right = self.__remove(node.right, key)
+            return node
+        else:
+            if node.left == None:
+                right_node = node.right
+                del node
+                self.count -= 1
+                return right_node
+            if node.right == None:
+                left_node = node.left
+                del node
+                self.count -= 1
+                return left_node
+            successor = self.__Node(node=self.__minimum(node.right))
+            self.count += 1
+            successor.right = self.__remove_min(node.right)
+            successor.left = node.left
+            del node
+            self.count -= 1
+            return successor
+
+    def remove(self, key):
+        self.root = self.__remove(self.root, key)
+
 
 if __name__ == "__main__":
-    pass
+    f = open("bible.txt", "r")
+    replace = [".", ",", ":", "(", ")", "?", "!", "-", ";", "\n"]
+    content = f.read().lower()
+    f.close()
+    for e in replace:
+        content = content.replace(e, "")
+    content = content.replace("'", " ")
+    content = content.split(" ")
+    print(len(content))
+    c = Counter(content)
+    print(c.get("god"))
+    bst = BST()
+    for key in c.keys():
+        bst.insert(key, c.get(key))
+    start = time.time()
+    print(bst.search("god"))
+    end = time.time()
+    print("time: {:0.6f} s".format(end-start))
+
+
+
+
+
