@@ -1,5 +1,5 @@
 # 没有自环边，但有可能有平行边
-class SparseGraph():
+class SparseGraph:
     def __init__(self, n, directed):
         self.__n = n  # 节点数
         self.__m = 0  # 边数
