@@ -5,7 +5,7 @@ class DenseGraph:
         self.__directed = directed  # 是否是有向图
         self.__g = []
         for i in range(n):
-            self.__g.append([False]*n)
+            self.__g.append([0]*n)
 
     def V(self):
         return self.__n
@@ -18,9 +18,9 @@ class DenseGraph:
         assert (w >= 0) and (w < self.__n)
         if self.hasEdge(v, w):
             return
-        self.__g[v][w] = True
+        self.__g[v][w] = 1
         if not self.__directed:
-            self.__g[w][v] = True
+            self.__g[w][v] = 1
         self.__m += 1
 
     def hasEdge(self, v, w):
