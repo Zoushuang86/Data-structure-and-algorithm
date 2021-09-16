@@ -17,7 +17,7 @@ def __partition_3(arr, left, right):
 
     lt = left       # arr在[left+1, lt]<v
     gt = right+1    # arr在[gt, right]>v
-    i = left+1      # arr在[right+1, i-1]=v
+    i = left+1      # arr在[right+1, i]=v
     while i < gt:
         if arr[i] < v:
             arr[i], arr[lt+1] = arr[lt+1], arr[i]
@@ -33,7 +33,7 @@ def __partition_3(arr, left, right):
 
 
 # 对arr在区间[left,right]进行快速排序
-# 将arr[left:right+1]分为<v、=v、>v三个部分
+# 将arr[left:right]分为<v、=v、>v三个部分
 # 之后只需将>v和<v两个部分进行三路快速排序
 def __quick_sort_3(arr, left, right):
     if right-left <= 15:

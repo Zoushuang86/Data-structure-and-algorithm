@@ -15,7 +15,7 @@ def __partition_2(arr, left, right):
 
     v = arr[left]
 
-    # arr[left+1,i) <= v, arr[i,right] >= v
+    # arr[left+1,i) <= v, arr[i,right) >= v
     i, j = left+1, right
     while True:
         while (i <= right) and (arr[i] < v):    # 多了个等号的判断也会造成两棵子树不平衡

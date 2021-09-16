@@ -4,9 +4,9 @@ T = TypeVar("T")    # Can be anything
 from sort_test_helper import *
 from insertion_sort import *
 
-# 对arr的闭区间[left, middle]、[middle, right]进行排序
+# 对arr的闭区间[left, middle]、[middle+1, right]进行排序
 def __merge(arr, left, middle, right):
-    aux = arr[left:right + 1].copy()
+    aux = arr[left:right + 1].copy()    # aux有left的偏移量
     i, j = left, middle + 1
     for k in range(left, right + 1):
         # 判断索引合法性
@@ -63,19 +63,15 @@ def merge_sort_new(arr: List[Generic[T]], n: int):
 
 
 def merge_sort_bottom_to_up(arr: List[Generic[T]], n: int):
-    # 生成size列表
-    size_list = []
-    i = 1
-    while i <= n:
-        size_list.append(i)
-        i += i
+    size = 1
     # 遍历size大小的子数组
-    for size in size_list:
+    while size <= n:
         for i in range(0, n - size, size+size):
             # 保证后面数组存在
             # 对arr[i,i+size-1]和arr[i+size, i+size+size-1]进行归并
             # min()保证当不足size大小时不会越界
             __merge(arr, i, i+size-1, min(i+size+size-1, n-1))
+        size += size
 
 
 def merge_sort_bottom_to_up_new(arr: List[Generic[T]], n: int):
@@ -127,4 +123,3 @@ if __name__ == "__main__":
     test_sort("Merge Sort New", merge_sort_new, arr2, len(arr2))
     test_sort("Merge Sort Bottom to Up", merge_sort_bottom_to_up, arr3, len(arr3))
     test_sort("Merge Sort Bottom to Up New", merge_sort_bottom_to_up_new, arr4, len(arr4))
-

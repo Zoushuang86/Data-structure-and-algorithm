@@ -6,11 +6,11 @@ from sort_test_helper import *
 
 # 改进前
 def shell_sort(arr: List[Generic[T]], n: int):
-    # 计算 increment sequence: 1, 4, 13, 40...
+    # 计算 increment sequence: 1, 4, 13, 40...分组数量
     h = 1
     while h < n / 3:
         h = 3 * h + 1   # +1为了保证最后一次进行插入排序
-    h = 1
+
     while h >= 1:
         # h-sort the array
         for i in range(h, n):

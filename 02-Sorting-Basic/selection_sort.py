@@ -11,9 +11,7 @@ def selection_sort(arr: List[Generic[T]], n: int):
         for j in range(i+1, n, 1):
             if arr[j] < arr[minIndex]:
                 minIndex = j
-        t = arr[minIndex]
-        arr[minIndex] = arr[i]
-        arr[i] = t
+        arr[minIndex], arr[i] = arr[i], arr[minIndex]
 
 
 class Student:
@@ -66,5 +64,5 @@ if __name__ == "__main__":
     # print(new_arry)
 
     n = 10000
-    arr = generate_random_list(n, 0, n)
+    arr = generate_random_list(n, 0, n*3)
     test_sort("Selection Sort", selection_sort, arr, len(arr))

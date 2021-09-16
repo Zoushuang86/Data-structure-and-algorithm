@@ -10,7 +10,7 @@ sys.setrecursionlimit(100000)
 # 返回索引p，使得arr[left,p-1]<arr[p] and arr[p]<arr[p,right]
 def __partition(arr, left, right):
     v = arr[left]
-    # arr[left,p-1]<arr[p] and arr[p]<arr[p,right)
+    # arr[left+1,j]<v and v<arr[j+1,i)
     # 初始化时，两个区间都为空
     j = left
     for i in range(left+1, right+1):
@@ -21,7 +21,7 @@ def __partition(arr, left, right):
     return j
 
 
-# 对arr[left:right+1]进行快速排序
+# 对arr[left:right]进行快速排序
 def __quick_sort(arr, left, right):
     if left >= right:
         return
@@ -54,7 +54,7 @@ def __partition_new(arr, left, right):
 def __quick_sort_new(arr, left, right):
     # if left >= right:
     #     return
-    if right-left<=15:
+    if right-left <= 15:
         # print(arr)
         insertion_sort_new(arr, left, right)
         return
