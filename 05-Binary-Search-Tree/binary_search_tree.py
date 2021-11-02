@@ -19,18 +19,18 @@ class BST:
                 self.right = node.right
 
     def __init__(self):
-        self.root = None
-        self.count = 0
+        self.__root = None
+        self.__count = 0
 
     def size(self):
-        return self.count
+        return self.__count
 
     def is_empty(self):
-        return self.count == 0
+        return self.__count == 0
 
     def __insert(self, node: __Node, key, value):
         if node == None:
-            self.count += 1
+            self.__count += 1
             return self.__Node(key, value)
         if key == node.key:
             node.value = value
@@ -41,7 +41,7 @@ class BST:
         return node
 
     def insert(self, key, value):
-        self.root = self.__insert(self.root, key, value)
+        self.__root = self.__insert(self.__root, key, value)
 
     def __contain(self, node: __Node, key):
         if node == None:
@@ -54,7 +54,7 @@ class BST:
             return self.__contain(node.right, key)
 
     def contain(self, key):
-        return self.__contain(self.root, key)
+        return self.__contain(self.__root, key)
 
     def __search(self, node: __Node, key):
         if node == None:
@@ -67,7 +67,7 @@ class BST:
             return self.__search(node.right, key)
 
     def search(self, key):
-        return self.__search(self.root, key)
+        return self.__search(self.__root, key)
 
     def __pre_order(self, node: __Node):
         if node != None:
@@ -76,7 +76,7 @@ class BST:
             self.__pre_order(node.right)
 
     def pre_order(self):
-        self.__pre_order(self.root)
+        self.__pre_order(self.__root)
 
     def __in_order(self, node: __Node):
         if node != None:
@@ -85,7 +85,7 @@ class BST:
             self.__in_order(node.right)
 
     def in_order(self):
-        self.__in_order(self.root)
+        self.__in_order(self.__root)
 
     def __post_order(self, node: __Node):
         if node != None:
@@ -94,18 +94,18 @@ class BST:
             print(node.key)
 
     def post_order(self):
-        self.__post_order(self.root)
+        self.__post_order(self.__root)
 
     def destroy(self, node: __Node):
         if node != None:
             self.destroy(node.left)
             self.destroy(node.right)
             del node
-            self.count -= 1
+            self.__count -= 1
 
     def level_order(self):
         q = Queue()
-        q.put(self.root)
+        q.put(self.__root)
         while q.empty() == False:
             node = q.get()
             print(node.key)
@@ -120,8 +120,8 @@ class BST:
         return self.__minimum(node.left)
 
     def minimum(self):
-        assert self.count != 0
-        min_node = self.__minimum(self.root)
+        assert self.__count != 0
+        min_node = self.__minimum(self.__root)
         return min_node.key
 
     def __maximum(self, node: __Node):
@@ -130,35 +130,35 @@ class BST:
         return self.__maximum(node.right)
 
     def maximum(self):
-        assert self.count != 0
-        max_node = self.__maximum(self.root)
+        assert self.__count != 0
+        max_node = self.__maximum(self.__root)
         return max_node.key
 
     def __remove_min(self, node: __Node):
         if node.left == None:
             right_node = node.right
             del node
-            self.count -= 1
+            self.__count -= 1
             return right_node
         node.left = self.__remove_min(node.left)
         return node
 
     def remove_min(self):
-        if self.root != None:
-            self.root = self.__remove_min(self.root)
+        if self.__root != None:
+            self.__root = self.__remove_min(self.__root)
 
     def __remove_max(self, node: __Node):
         if node.right == None:
             left_node = node.left
             del node
-            self.count -= 1
+            self.__count -= 1
             return left_node
         node.right = self.__remove_max(node.right)
         return node
 
     def remove_max(self):
-        if self.root != None:
-            self.root = self.__remove_max(self.root)
+        if self.__root != None:
+            self.__root = self.__remove_max(self.__root)
 
     def __remove(self, node: __Node, key):
         if node == None:
@@ -173,23 +173,23 @@ class BST:
             if node.left == None:
                 right_node = node.right
                 del node
-                self.count -= 1
+                self.__count -= 1
                 return right_node
             if node.right == None:
                 left_node = node.left
                 del node
-                self.count -= 1
+                self.__count -= 1
                 return left_node
             successor = self.__Node(node=self.__minimum(node.right))
-            self.count += 1
+            self.__count += 1
             successor.right = self.__remove_min(node.right)
             successor.left = node.left
             del node
-            self.count -= 1
+            self.__count -= 1
             return successor
 
     def remove(self, key):
-        self.root = self.__remove(self.root, key)
+        self.__root = self.__remove(self.__root, key)
 
 
 if __name__ == "__main__":

@@ -1,5 +1,4 @@
-from sort_test_helper import generate_nearly_ordered_array
-
+from sort_test_helper import *
 
 def binary_search(arr, n, target):
     """
@@ -21,9 +20,27 @@ def binary_search(arr, n, target):
     return -1
 
 
+def __binary_search_recursion(arr, left, right, target):
+    if left > right:
+        return -1
+
+    mid = left + (right - left) // 2
+    if arr[mid] == target:
+        return mid
+    elif arr[mid] > target:
+        return __binary_search_recursion(arr, left, mid-1, target)
+    else:
+        return __binary_search_recursion(arr, mid+1, right, target)
+
+
+def binary_search_recursion(arr, n, target):
+    return __binary_search_recursion(arr, 0, n-1, target)
+
+
 if __name__ == "__main__":
-    n = 10
+    n = 1000000000
     arr = generate_nearly_ordered_array(n, 0)
-    print(arr)
-    index = binary_search(arr, n, 8)
-    print(index)
+    target = arr[n//4]
+    # print(arr)
+    # test_search("binary_search", binary_search, arr, n, target)
+    # test_search("binary_search_recursion", binary_search_recursion, arr, n, target)

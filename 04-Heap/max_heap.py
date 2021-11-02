@@ -146,10 +146,12 @@ class MaxHeap:
 
 
 if __name__ == "__main__":
-    n = 20
+    n = 6
     maxheap = MaxHeap(100)
     for i in range(n):
-        maxheap.insert(random.randint(0, 99))
+        t = random.randint(0, 1000)
+        print(t)
+        maxheap.insert(t)
     maxheap.printHeap()
     # while maxheap.isEmpty() == False:
     maxheap.extructMax()

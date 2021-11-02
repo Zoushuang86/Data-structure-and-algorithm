@@ -22,6 +22,13 @@ def test_sort(sort_name, sort, arr: List[Generic[T]], n: int):
     print("{} : {:.4f} s".format(sort_name, end_time-start_time))
 
 
+def test_search(sort_name, sort, arr: List[Generic[T]], n: int, target: int):
+    start_time = time.time()
+    sort(arr, n, target)
+    end_time = time.time()
+    print("{} : {:.4f} s".format(sort_name, end_time-start_time))
+
+
 def is_sorted(arr: List[Generic[T]], n: int) -> bool:
     for i in range(n):
         if arr[i] > arr[i+1]:
