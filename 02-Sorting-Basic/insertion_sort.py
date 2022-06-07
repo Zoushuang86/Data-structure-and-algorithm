@@ -10,10 +10,8 @@ def insertion_sort(arr: List[Generic[T]], n: int):
         # 寻找元素arr[i]合适的插入位置
         for j in range(i, 0, -1):
             if arr[j] < arr[j-1]:
-                t = arr[j]
-                arr[j] = arr[j-1]
-                arr[j-1] = t
-            else:
+                arr[j], arr[j-1] = arr[j-1], arr[j]
+            else:   # 提前终止
                 break
 
 # 改进后
