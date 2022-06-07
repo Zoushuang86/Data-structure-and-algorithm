@@ -8,7 +8,6 @@ from sort_test_helper import generate_random_list, test_sort, is_sorted
 def insertion_sort(arr: List[Generic[T]], n: int):
     for i in range(1, n):
         # 寻找元素arr[i]合适的插入位置
-        j = i
         for j in range(i, 0, -1):
             if arr[j] < arr[j-1]:
                 t = arr[j]
