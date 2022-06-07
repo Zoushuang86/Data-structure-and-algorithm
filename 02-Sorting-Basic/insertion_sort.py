@@ -15,7 +15,6 @@ def insertion_sort(arr: List[Generic[T]], n: int):
                 arr[j-1] = t
             else:
                 break
-            j -= 1
 
 # 改进后
 def insertion_sort_new(arr: List[Generic[T]], n: int):
