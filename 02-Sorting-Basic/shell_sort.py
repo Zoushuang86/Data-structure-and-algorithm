@@ -16,6 +16,7 @@ def shell_sort(arr: List[Generic[T]], n: int):
         for i in range(h, n):
             # 对arr[i], arr[i-h], arr[i-2*h]...使用插入排序
             e = arr[i]
+            j = i
             for j in range(i, h-2, -h): # -2：一是为了能够取到h，二是保证取到h大小数组的第一个数
                 if e < arr[j-h]:
                     arr[j] = arr[j-h]
