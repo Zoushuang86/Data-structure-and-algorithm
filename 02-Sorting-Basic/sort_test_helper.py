@@ -1,7 +1,7 @@
 import numpy as np
 import time
-from typing import TypeVar, List, Generic
-T = TypeVar("T")    # Can be anything
+# from typing import TypeVar, List, Generic
+# T = TypeVar("T")    # Can be anything
 
 import random
 
@@ -15,21 +15,21 @@ def generate_random_list(n, rangeL, rangeR):
     return arr
 
 
-def test_sort(sort_name, sort, arr: List[Generic[T]], n: int):
+def test_sort(sort_name, sort, arr: list, n: int):
     start_time = time.time()
     sort(arr, n)
     end_time = time.time()
     print("{} : {:.4f} s".format(sort_name, end_time-start_time))
 
 
-def test_search(sort_name, sort, arr: List[Generic[T]], n: int, target: int):
+def test_search(sort_name, sort, arr: list, n: int, target: int):
     start_time = time.time()
     sort(arr, n, target)
     end_time = time.time()
     print("{} : {:.8f} s".format(sort_name, end_time-start_time))
 
 
-def is_sorted(arr: List[Generic[T]], n: int) -> bool:
+def is_sorted(arr: list, n: int) -> bool:
     for i in range(n):
         if arr[i] > arr[i+1]:
             return False
