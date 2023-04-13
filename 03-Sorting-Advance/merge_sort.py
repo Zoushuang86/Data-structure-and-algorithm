@@ -51,6 +51,7 @@ def __merge_sort_new(arr, left, right):
     #     return
     if right - left <= 15:
         insertion_sort_new(arr, left, right)
+        return
     middle = (left+right) // 2
     __merge_sort(arr, left, middle)
     __merge_sort(arr, middle+1, right)
@@ -79,6 +80,7 @@ def merge_sort_bottom_to_up_new(arr: List[Generic[T]], n: int):
     for i in range(0, n, 16):
         # print(arr)
         insertion_sort_new(arr, i, min(i+15, n-1))
+        return
     # print(arr)
     # 生成size列表
     size_list = []
