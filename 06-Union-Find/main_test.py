@@ -1,6 +1,9 @@
-from union_find_test_helper import testUF1
+from union_find_test_helper import *
 
 
 if __name__ == "__main__":
-    # UnionFind1, 20000 ops, 5.9449 s
-    testUF1(10000)
+    n = 10000
+    # UnionFind1, 20000 ops, 5.4345 s
+    testUF1(n)
+    # UnionFind2, 20000 ops, 1.1780 s
+    testUF2(n)

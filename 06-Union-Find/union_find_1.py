@@ -1,5 +1,6 @@
 class UnionFind1:
     def __init__(self, n):
+        # 初始化都不相连接
         self.__id = [i for i in range(n)]
         self.__count = n
 

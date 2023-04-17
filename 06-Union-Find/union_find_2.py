@@ -18,3 +18,4 @@ class UnionFind2:
 
         if p_root != q_root:
             self.__parent[p_root] = q_root
+

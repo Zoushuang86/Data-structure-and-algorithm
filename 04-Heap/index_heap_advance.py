@@ -94,12 +94,6 @@ class IndexMaxHeap:
         assert self.__contain(i)
         i += 1
         self.__data[i] = newItem
-        # 找到indexes[j]=i，j表示data[i]在堆中的位置
-        # 之后shiftUP(j), 再shiftDown(j)
-        # for j in range(1, self.__count+1):
-        #     if self.__indexes[j] == i:
-        #         self.__shiftUp(j)
-        #         self.__shiftDown(j)
         j = self.__reverse[i]
         self.__shiftUp(j)
         self.__shiftDown(j)
